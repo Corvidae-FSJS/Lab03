@@ -14,7 +14,8 @@ describe('Document Collection', () => {
   // TODO
   it('takes object and writes to new file', () => {
     const exampleObject = { name: 'Dylan', artist: true };
-    writeFile.mockResolvedValue(exampleObject);
+    const writePromise = Promise.resolve(exampleObject);
+    writeFile.mockResolvedValue(writePromise);
 
     return newDocuments.save(exampleObject)
       .then(returnedObj => {
