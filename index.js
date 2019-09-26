@@ -1,14 +1,37 @@
-const DocumentCollection = require('./lib/document-collection');
+const database = require('./lib/database');
 
-const documents = new DocumentCollection('./docs');
+database.connect('./db');
 
-// write some code to exercise your document collection
+const models = require('./models/models');
 
-const exampleObject = {
-  key: 'value',
-  name: 'Dylan',
-  artist: true
+const person = {
+  firstName: { type: 'string', required: true },
+  lastName: { type: 'string', required: true },
+  married: { type: 'boolean' },
+  kids: { type: 'number' }
 };
 
+models.create(person)
+  .then(res => {
+    models.findById(res.id)
+      .then(res => console.log(res));
+  });
 
-documents.save(exampleObject);
+models.find()
+  .then(res => console.log(res));
+
+
+// const DocumentCollection = require('./lib/document-collection');
+
+// const documents = new DocumentCollection('./docs');
+
+// // write some code to exercise your document collection
+
+// const exampleObject = {
+//   key: 'value',
+//   name: 'Dylan',
+//   artist: true
+// };
+
+
+// documents.save(exampleObject);
