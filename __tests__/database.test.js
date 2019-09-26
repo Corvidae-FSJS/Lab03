@@ -9,11 +9,11 @@ const DocumentCollection = require('../lib/document-collection');
 
 // for setting up mock expectations
 const { mkdirp } = require('../lib/files');
-
+const path = require('path');
 
 describe('Database', () => {
 
-  const dbPath = './dbpath';
+  const dbPath = './dbpath'; 
 
   it('connect sets connection promise', () => {
     // arrange
@@ -53,10 +53,10 @@ describe('Database', () => {
         const mkdirpCalls = mkdirp.mock.calls;
         expect(mkdirpCalls.length).toBe(2); 
         expect(mkdirpCalls[0][0]).toBe(dbPath);
-        expect(mkdirpCalls[1][0]).toBe('dbpath/test');
+        expect(mkdirpCalls[1][0]).toBe(path.join('dbpath', 'test'));
 
         expect(collection).toBeInstanceOf(DocumentCollection);
-        expect(collection.folder).toBe('dbpath/test');
+        expect(collection.folder).toBe(path.join('dbpath', 'test'));
         expect(Database.collections.test).toBe(collection);
 
         return Database.getCollection('test')
