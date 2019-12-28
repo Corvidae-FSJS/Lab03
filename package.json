@@ -1,0 +1,31 @@
+{
+  "name": "Lab03",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "test": "jest --verbose --passWithNoTests",
+    "lint": "eslint '**/*.js'",
+    "test:watch": "npm run test -- --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Corvidae-FSJS/Lab03.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Corvidae-FSJS/Lab03/issues"
+  },
+  "homepage": "https://github.com/Corvidae-FSJS/Lab03#readme",
+  "dependencies": {
+    "eslint": "^6.4.0",
+    "jest": "^24.9.0",
+    "shortid": "^2.2.15"
+  }
+}
